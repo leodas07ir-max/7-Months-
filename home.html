@@ -8,8 +8,8 @@
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Parisienne&display=swap');
 
   body {
-    background-color: #f5f0e1; /* Creamy, vintage paper color */
-    color: #4b3d3d; /* Soft brown for text */
+    background-color: #f5f0e1; /* A creamy, vintage paper color */
+    color: #4b3d3d; /* A dark, soft brown for the text */
     font-family: 'Cormorant Garamond', serif;
     margin: 0;
     padding: 2rem;
@@ -85,6 +85,63 @@
       font-style: italic;
   }
 
+  /* PHOTO ALBUM STYLES */
+  .photo-album {
+    margin-top: 3rem;
+  }
+
+  .photo-album h3 {
+    text-align: center;
+    font-family: 'Parisienne', cursive;
+    font-size: 2em;
+    margin-bottom: 1rem;
+  }
+
+  .album-scroller {
+    display: flex;
+    overflow-x: auto;
+    padding: 1rem 0;
+    gap: 20px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .album-scroller::-webkit-scrollbar {
+    height: 8px;
+  }
+  .album-scroller::-webkit-scrollbar-thumb {
+    background-color: #d1c9b9;
+    border-radius: 10px;
+  }
+
+  .polaroid-frame {
+    flex: 0 0 auto;
+    background-color: #f0eded;
+    border: 2px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    padding: 10px 10px 30px 10px;
+    transform: rotate(5deg);
+    transition: transform 0.2s ease-in-out;
+  }
+  .polaroid-frame:nth-child(2n) {
+    transform: rotate(-3deg);
+  }
+  .polaroid-frame:hover {
+    transform: scale(1.1) rotate(0deg);
+    z-index: 10;
+  }
+  .polaroid-frame img {
+    display: block;
+    width: 150px;
+    height: auto;
+    border: 1px solid #ddd;
+  }
+  .polaroid-frame p {
+    text-align: center;
+    font-size: 0.8em;
+    margin-top: 10px;
+    text-indent: 0;
+  }
+
 </style>
 </head>
 <body>
@@ -98,20 +155,15 @@
     7 months… can you believe it? Seven whole months of us, of our story, of you and me walking together through every little moment.
   </p>
 
-  <p>
-    And now, with 5 more months to complete a year, I can’t help but look back at everything we’ve shared and smile — because it’s been nothing less than magic.
-  </p>
+  <div id="typewriter-text">
+    <p>And now, with 5 more months to complete a year, I can’t help but look back at everything we’ve shared and smile — because it’s been nothing less than magic.</p>
 
-  <p>
-    You’ve been my pookie, my bhookie, my golgappa, my smile, my peace, my chaos, my everything. Every day with you feels like a chapter I never want to end, and even the simplest memories with you shine brighter than anything else in my life. From the laughs that still echo in my heart, to the little arguments that only made us stronger, to the way your presence makes me feel at home — it all means more to me than words can ever carry.
-  </p>
-  <p>
-    I love you in ways I can’t put into sentences, in ways that overflow beyond letters and notes. It’s in the way I think of you when I wake up, in the way I carry you in every dream, in the way my heart whispers your name in every beat. You are not just my love, you are my world.
-  </p>
+    <p>You’ve been my pookie, my bhookie, my golgappa, my smile, my peace, my chaos, my everything. Every day with you feels like a chapter I never want to end, and even the simplest memories with you shine brighter than anything else in my life. From the laughs that still echo in my heart, to the little arguments that only made us stronger, to the way your presence makes me feel at home — it all means more to me than words can ever carry.</p>
+    
+    <p>I love you in ways I can’t put into sentences, in ways that overflow beyond letters and notes. It’s in the way I think of you when I wake up, in the way I carry you in every dream, in the way my heart whispers your name in every beat. You are not just my love, you are my world.</p>
 
-  <p>
-    7 months down, my love, and forever still waiting ahead of us. I promise you — this journey of ours will only grow deeper, more beautiful, and more endless with every passing day. You are mine, and I am yours, and that’s the greatest truth of my life.
-  </p>
+    <p>7 months down, my love, and forever still waiting ahead of us. I promise you — this journey of ours will only grow deeper, more beautiful, and more endless with every passing day. You are mine, and I am yours, and that’s the greatest truth of my life.</p>
+  </div>
 
   <p>
     I love you and I always will<br>
@@ -137,7 +189,50 @@
     Ur soulmate 💘<br>
     Tata 🐼
   </p>
+  
+  <div class="photo-album">
+    <h3>Our Memories</h3>
+    <div class="album-scroller">
+      <div class="polaroid-frame">
+        <img src="https://via.placeholder.com/150" alt="Placeholder photo">
+        <p>Your first memory</p>
+      </div>
+      <div class="polaroid-frame">
+        <img src="https://via.placeholder.com/150" alt="Placeholder photo">
+        <p>A fun moment</p>
+      </div>
+      <div class="polaroid-frame">
+        <img src="https://via.placeholder.com/150" alt="Placeholder photo">
+        <p>Together forever</p>
+      </div>
+      </div>
+  </div>
+
 </div>
+
+<script>
+  // TYPEWRITER EFFECT SCRIPT
+  const typewriterTextElement = document.getElementById('typewriter-text');
+  const fullText = typewriterTextElement.innerHTML;
+  typewriterTextElement.innerHTML = '';
+  let i = 0;
+  let isTyping = false;
+
+  function typeWriter() {
+    if (i < fullText.length) {
+      if (!isTyping) {
+        isTyping = true;
+      }
+      typewriterTextElement.innerHTML += fullText.charAt(i);
+      i++;
+      setTimeout(typeWriter, 50); // Adjust speed here (milliseconds)
+    }
+  }
+
+  window.onload = function() {
+      typeWriter();
+  };
+</script>
 
 </body>
 </html>
