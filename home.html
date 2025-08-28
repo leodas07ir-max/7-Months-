@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Parisienne&display=swap');
+
+  body {
+    background-color: #f5f0e1; /* A creamy, vintage paper color */
+    color: #4b3d3d; /* A dark, soft brown for the text */
+    font-family: 'Cormorant Garamond', serif;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .login-container {
+    background-color: #fffaf0;
+    border: 1px solid #d1c9b9;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    padding: 3rem 4rem;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  .login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><rect width="10" height="10" fill="transparent"/><path d="M0,5 L5,0 M5,10 L10,5" stroke="%23d1c9b9" stroke-opacity="0.5" fill="none"/></svg>');
+    opacity: 0.1;
+    pointer-events: none;
+  }
+  
+  h1 {
+    font-family: 'Parisienne', cursive;
+    font-size: 3em;
+    margin-bottom: 2rem;
+    color: #6b4d36;
+    font-weight: normal;
+  }
+
+  .input-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+
+  .input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+
+  .input-group input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #d1c9b9;
+    background-color: #fcf8e8;
+    font-family: 'Cormorant Garamond', serif;
+    color: #4b3d3d;
+    font-size: 1em;
+  }
+
+  button {
+    background-color: #6b4d36;
+    color: #fffaf0;
+    border: none;
+    padding: 12px 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #4b3d3d;
+  }
+
+  .error-message {
+    color: #a82e2e;
+    margin-top: 1rem;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="login-container">
+  <h1>A Secret to Unveil</h1>
+  <p>Please enter your details to proceed.</p>
+  
+  <form id="loginForm">
+    <div class="input-group">
+      <label for="name">enter ur name👀</label>
+      <input type="text" id="name" required>
+    </div>
+    <div class="input-group">
+      <label for="passcode">enter passcode 😉</label>
+      <input type="password" id="passcode" required>
+    </div>
+    <button type="submit">Enter</button>
+  </form>
+  <p id="errorMessage" class="error-message">Incorrect name or passcode. Please try again.</p>
+</div>
+
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const passcode = document.getElementById('passcode').value;
+    const errorMessage = document.getElementById('errorMessage');
+
+    if (name === 'Aiendri' && passcode === 'Gayab Panda') {
+      window.location.href = 'index.html'; // Redirect to the letter page
+    } else {
+      errorMessage.style.display = 'block';
+    }
+  });
+</script>
+
+</body>
+</html>
